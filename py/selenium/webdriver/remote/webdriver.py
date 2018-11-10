@@ -16,7 +16,7 @@
 # under the License.
 
 """The WebDriver implementation."""
-
+import pprint
 import base64
 import copy
 import warnings
@@ -245,6 +245,8 @@ class WebDriver(object):
         response = self.execute(Command.NEW_SESSION, parameters)
         if 'sessionId' not in response:
             response = response['value']
+        print "about to log response"
+        pprint.pprint(response)
         self.session_id = response['sessionId']
         self.capabilities = response.get('value')
 
